@@ -1,7 +1,7 @@
 const sequelize = require("../config/connection");
 const {faker} = require(`@faker-js/faker`);
-const User = require("../models/user");
-const Blog = require("../models/Blog");
+const User = require("../models/User");
+const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 
 
@@ -10,7 +10,7 @@ async function seedUsers(number = 10){
 
     const admin = await User.create({
         email: 'justin@test.com',
-        name: 'justinTesting',
+        username: 'justinTesting',
         password: 'abcd1234'
     });
     models.push(admin);
@@ -19,7 +19,7 @@ async function seedUsers(number = 10){
        
        const created = await User.create({
             email: faker.internet.email(),
-            name: faker.name.fullName(),
+            username: faker.name.fullName(),
             password: "12345678",
         });
 
@@ -31,12 +31,12 @@ async function seedUsers(number = 10){
 
 }
 
-async function seedBlogs(userPools, number = 10){
+async function seedPosts(userPools, number = 10){
     const models = [];
     // seed user
     for (let index = 0; index < number; index++) {
        
-       const created = await Blog.create({
+       const created = await Post.create({
             user_id: faker.helpers.arrayElement(userPools).id,
             title: faker.music.songName(),
             content: faker.lorem.paragraph(),
@@ -50,14 +50,14 @@ async function seedBlogs(userPools, number = 10){
 
 }
 
-async function seedComments(userPools, blogPools, number = 10){
+async function seedComments(userPools, PostPools, number = 10){
     const models = [];
     // seed user
     for (let index = 0; index < number; index++) {
        
        const created = await Comment.create({
             user_id: faker.helpers.arrayElement(userPools).id,
-            blog_id: faker.helpers.arrayElement(blogPools).id,
+            Post_id: faker.helpers.arrayElement(PostPools).id,
             content: faker.lorem.paragraph(),
         });
 
@@ -73,9 +73,9 @@ async function seedComments(userPools, blogPools, number = 10){
         
         const users = await seedUsers();
         
-        const blogs = await seedBlogs(users);
+        const Posts = await seedPosts(users);
 
-        const comments = await seedComments(users, blogs);
+        const comments = await seedComments(users, Posts);
 
 
     }

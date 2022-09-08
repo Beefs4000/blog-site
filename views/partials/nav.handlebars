@@ -1,0 +1,22 @@
+<div class="block">
+  <nav class="nav">
+    <div class="nav-left">
+      <a class="nav-item" href="/">
+        <h1 class="title is-4">Tech Speak</h1>
+      </a>
+    </div>
+    <div class="nav-center nav-menu is-active">
+      <a class="nav-item" aria-current="page" href="/">Home</a>
+      {{#if session.loggedIn}}
+      <a class="nav-item" href="/dashboard">Dashboard</a>
+      <a class="nav-item" href="#" id="logout-btn">Log Out</a>
+
+      {{else}}
+      <a class="nav-item" href="/login">Log In</a>
+      <a class="nav-item" href="/register">Register</a>
+      {{/if}}
+    </div>
+
+
+  </nav>
+</div>

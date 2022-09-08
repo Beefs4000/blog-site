@@ -1,31 +1,34 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Comment extends Model {
+class Comment extends Model {};
 
-}
-
-Comment.init(
-    {
-        user_id: {
-            type: DataTypes.INTEGER.UNSIGNED,
-            allowNull: false,
-        },
-        blog_id: {
-            type: DataTypes.INTEGER.UNSIGNED,
-            allowNull: false,
-        },
-        content: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
+Comment.init({
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
     },
-    {
-        sequelize,
-        timestamps: true,
-        underscored: true,
-        modelName: 'comment',
-    }
-);
+    post_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'post',
+            key: 'id'
+        }
+    },
+    content: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        
+    },
+}, 
+{
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'comment'
+});
 
 module.exports = Comment;

@@ -1,0 +1,15 @@
+{{> nav}}
+
+<section >
+{{#each posts as |post|}}
+{{> homepage-posts}}
+{{/each}}
+
+</section>
+
+{{#if session.loggedIn}}
+
+<script src="./js/log-out.js"></script>
+
+
+{{/if}}

@@ -1,0 +1,51 @@
+{{> nav}}
+
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">{{post.title}} </h1>
+
+      <h2 class="subtitle">{{post.content}}</h2>
+      <footer class="card-footer">
+        <p class="card-footer-item">
+        <h3 class="title is-6">Posted by: {{post.user.username}} at {{format_time post.createdAt}} on {{format_date
+          post.createdAt}}</h3>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+
+  <div >
+    {{#if post.comments}}
+    <strong class="mb-2">Comments</strong>
+
+    {{#each post.comments as |comment|}}
+    {{> comment-card}}
+    {{/each}}
+
+    {{else}}
+    <strong>No comments yet...</strong>
+    {{/if}}
+  </div>
+
+  {{#if session.loggedIn}}
+  <strong>Add a comment!</strong>
+  <form>
+    <div class="field">
+      <textarea class="textarea" id="body" placeholder="Please Comment..."></textarea>
+    </div>
+    <button type="submit" class="button is-black" id="submit-btn" data-id="{{post.id}}">Submit</button>
+  </form>
+  {{/if}}
+
+</div>
+
+{{#if session.loggedIn}}
+
+<script src="../js/log-out.js"></script>
+
+
+{{/if}}
+
+<script src="../js/create-comment.js"></script>

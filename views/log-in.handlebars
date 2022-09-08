@@ -1,0 +1,25 @@
+{{> nav}}
+<div class="block">
+<form id="login-form">
+  <!-- Username input -->
+  <div class="field">
+    <label class="label" for="username-input" >Username</label>
+    <input type="text" id="username-input" class="form-control" placeholder="Enter User Name" />
+  </div>
+
+  <!-- Password input -->
+  <div class="field">
+    <label class="label" for="password-input">Password</label>
+    <input type="password" id="password-input" class="form-control" placeholder="Password" />
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" class="button is-black">Sign in</button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Not a member? <a href="/register">Register</a></p>
+  </div>
+</form>
+</div>
+<script src="./js/log-in.js"></script>
