@@ -8,7 +8,7 @@
     <a href="https://github.com/Beefs4000/blog-site"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="">View Demo</a>
+    <a href="https://blog-site-beefs4000.herokuapp.com/">View Demo</a>
     ·
     </p>
 </div>
